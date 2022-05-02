@@ -201,19 +201,19 @@ func (mr *MockIProductServiceMockRecorder) Enable(product interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Enable", reflect.TypeOf((*MockIProductService)(nil).Enable), product)
 }
 
-// GetByID mocks base method.
-func (m *MockIProductService) GetByID(id string) (application.IProduct, error) {
+// GetById mocks base method.
+func (m *MockIProductService) GetById(id string) (application.IProduct, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetByID", id)
+	ret := m.ctrl.Call(m, "GetById", id)
 	ret0, _ := ret[0].(application.IProduct)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetByID indicates an expected call of GetByID.
-func (mr *MockIProductServiceMockRecorder) GetByID(id interface{}) *gomock.Call {
+// GetById indicates an expected call of GetById.
+func (mr *MockIProductServiceMockRecorder) GetById(id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetByID", reflect.TypeOf((*MockIProductService)(nil).GetByID), id)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetById", reflect.TypeOf((*MockIProductService)(nil).GetById), id)
 }
 
 // MockIProductReader is a mock of IProductReader interface.

@@ -54,6 +54,10 @@ func TestProduct_IsValid(t *testing.T) {
 	_, err = product.IsValid()
 	require.Equal(t, "invalid status", err.Error())
 
+	product.Status = ""
+	_, err = product.IsValid()
+	require.Equal(t, "status must be non empty", err.Error())
+
 	product.Status = application.ENABLED
 	_, err = product.IsValid()
 	require.Nil(t, err)
@@ -61,4 +65,9 @@ func TestProduct_IsValid(t *testing.T) {
 	product.Price = -10
 	_, err = product.IsValid()
 	require.Equal(t, "product price must be greater than 0", err.Error())
+
+	product.Price = 20
+	product.Name = ""
+	_, err = product.IsValid()
+	require.Equal(t, "invalid name", err.Error())
 }

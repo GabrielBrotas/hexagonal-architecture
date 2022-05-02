@@ -23,7 +23,7 @@ type IProduct interface {
 }
 
 type IProductService interface {
-	GetByID(id string) (IProduct, error)
+	GetById(id string) (IProduct, error)
 	Create(name string, price float64) (IProduct, error)
 	Enable(product IProduct) (IProduct, error)
 	Disable(product IProduct) (IProduct, error) 
@@ -66,7 +66,7 @@ func NewProduct() *Product {
 }
 
 func (p *Product) IsValid() (bool, error) {
-	if p.Price < 0 {
+	if p.Price <= 0 {
 		return false, errors.New("product price must be greater than 0")
 	}
 
@@ -79,7 +79,11 @@ func (p *Product) IsValid() (bool, error) {
 	}
 
 	if p.Status == "" {
-		return false, errors.New("invalid status")
+		return false, errors.New("status must be non empty")
+	}
+
+	if p.Name == "" {
+		return false, errors.New("invalid name")
 	}
 
 	if p.Status != ENABLED && p.Status != DISABLED {
